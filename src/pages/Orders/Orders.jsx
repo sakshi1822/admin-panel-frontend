@@ -5,13 +5,15 @@ import { assets } from "../../assets/assets";
 const Orders = () => {
   const [data, setData] = useState([]);
   const fetchOrders = async () => {
-    const response = await axios.get("http://localhost:8080/api/orders/all");
+    const response = await axios.get(
+      "https://foodapi-yej6.onrender.com/api/orders/all",
+    );
     setData(response.data);
   };
 
   const statusHandler = async (event, orderId) => {
     const response = await axios.patch(
-      `http://localhost:8080/api/orders/status/${orderId}?status=${event.target.value}`
+      `https://foodapi-yej6.onrender.com/api/orders/status/${orderId}?status=${event.target.value}`,
     );
     if (response.status === 200) {
       await fetchOrders();
